@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - rock
+  - soil
+  - seed
+  - tree
+  - wind
   layers:
   - Default
   - TransparentFX
@@ -40,4 +45,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Rock
+    uniqueID: 3503515635
+    locked: 0
+  - name: Soil
+    uniqueID: 4116084499
+    locked: 0
+  - name: Roots
+    uniqueID: 153229365
+    locked: 0
+  - name: Seeds
+    uniqueID: 1812493261
+    locked: 0
+  - name: Tree
+    uniqueID: 853003763
+    locked: 0
+  - name: Wind
+    uniqueID: 2387136325
     locked: 0
