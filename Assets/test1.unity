@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f20ebec5c4ce9149879c809b5b857d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windX: 1
+  windX: 30
   windY: 0
 --- !u!50 &814475302
 Rigidbody2D:
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f20ebec5c4ce9149879c809b5b857d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windX: 1
+  windX: 30
   windY: 0
 --- !u!50 &999343609
 Rigidbody2D:
