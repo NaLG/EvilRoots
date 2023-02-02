@@ -6,7 +6,7 @@ public class FlapperController : MonoBehaviour
     private const int flapSteps = 7;
     public readonly float[] upwardForces = new float[flapSteps] {5f, 5f, 4f, 3f, 2f, 2f, 1f};
     public readonly float[] stopForces = new float[flapSteps] {5f, 5f, 4f, 3f, 2f, 2f, 1f};
-    private int whichFlap = 0;
+    public int whichFlap = 0;
     public float upwardForce = 5f;
     public float maxDownwardVelocity = -10;
     public Vector2 sumWindForce;
@@ -79,35 +79,44 @@ public class FlapperController : MonoBehaviour
             soilHit.SproutTree();
             gameObject.SetActive(false);
         }
+        // else if (tagName == "brawndo")
+        // {
+        //     Debug.Log("ThIrSt MuTiLaTeD!!!");
+        //     BrawndoController brawndoHit = (BrawndoController)collision.gameObject.GetComponent<BrawndoController>();
+        //     brawndoHit.MutilateThirst();
+        // }
     }
 
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("wwhoooosshhshhh????");
         Wind wind = other.GetComponent<Wind>();
         if (wind != null)
         {
-            Debug.Log("wwhoooosshhshhh!");
             rigidbody2d.AddForce(wind.GetWindForce() * Time.deltaTime);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Enter Wind?");
-        if (collider.tag == "Wind")
+        // Debug.Log("trigger enter: " + collider.tag);
+        if (collider.tag == "wind")
         {
             Debug.Log("Enter Wind");
             Wind wind = collider.GetComponent<Wind>();
             sumWindForce += wind.GetWindForce();
         }
+        if (collider.tag == "brawndo")
+        {
+            Debug.Log("ThIrSt MuTiLaTeD!!!");
+            BrawndoController brawndoHit = collider.GetComponent<BrawndoController>();
+            brawndoHit.MutilateThirst();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("Exit Wind?");
-        if (collider.tag == "Wind")
+        if (collider.tag == "wind")
         {
             Debug.Log("Exit Wind");
             // sumWindForce = Vector2.zero;
@@ -121,11 +130,24 @@ public class FlapperController : MonoBehaviour
         }
     }
 
+    public void place(Vector2 pos)
+    {
+        // Debug.Log("Adding impulse!");
+        rigidbody2d.transform.position = pos;
+    }
+
+    public void ApplyImpulseForce(Vector2 f)
+    {
+        // Debug.Log("Adding impulse!");
+        // Debug.Log("Adding Impulse: " + f.x + ", " + f.y);
+        rigidbody2d.AddForce(f);
+    }
+
     public void ApplyWindForce(float windX, float windY)
     {
         // Debug.Log("Adding Wind!");
         sumWindForce = new Vector2(sumWindForce.x + windX, sumWindForce.y + windY);
-        Debug.Log("Adding Wind! " + sumWindForce);
+        // Debug.Log("Adding Wind! " + sumWindForce);
     }
 
     public void RemoveWindForce(float windX, float windY)
@@ -133,6 +155,6 @@ public class FlapperController : MonoBehaviour
         // Debug.Log("Removing Wind");
         // ApplyWindForce(-windX, -windY);
         sumWindForce = new Vector2(sumWindForce.x - windX, sumWindForce.y - windY);
-        Debug.Log("Removing Wind: " + sumWindForce);
+        // Debug.Log("Removing Wind: " + sumWindForce);
     }
 }

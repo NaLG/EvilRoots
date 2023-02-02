@@ -13,32 +13,32 @@ public class Wind : MonoBehaviour
         return new Vector2(windX, windY);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        string tagName = other.tag;
-        Debug.Log("add wind? " + tagName);
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     string tagName = other.tag;
+    //     // Debug.Log("add wind? " + tagName);
 
-        // Check if the entered collider is the player character
-        // if (other.CompareTag("Player"))
-        if (tagName == "seed")
-        {
-            // Apply wind force to the player character
-            FlapperController player = other.GetComponent<FlapperController>();
-            player.ApplyWindForce(windX, windY);
-        }
-    }
+    //     // Check if the entered collider is the player character
+    //     // if (other.CompareTag("Player"))
+    //     if (tagName == "seed")
+    //     {
+    //         // Apply wind force to the player character
+    //         FlapperController player = other.GetComponent<FlapperController>();
+    //         player.ApplyWindForce(windX, windY);
+    //     }
+    // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        string tagName = other.tag;
-        Debug.Log("remove wind? " + tagName);
-        // Check if the exited collider is the player character
-        // if (other.CompareTag("seed"))
-        if (tagName == "seed")
-        {
-            // Remove wind force from the player character
-            FlapperController player = other.GetComponent<FlapperController>();
-            player.RemoveWindForce(windX, windY);
-        }
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     string tagName = other.tag;
+    //     // Debug.Log("remove wind? " + tagName);
+    //     // Check if the exited collider is the player character
+    //     // if (other.CompareTag("seed"))
+    //     if (tagName == "seed")
+    //     {
+    //         // Remove wind force from the player character
+    //         FlapperController player = other.GetComponent<FlapperController>();
+    //         player.RemoveWindForce(windX, windY);
+    //     }
+    // }
 }
