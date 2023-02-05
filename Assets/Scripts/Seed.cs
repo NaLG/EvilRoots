@@ -40,7 +40,7 @@ public class Seed : MonoBehaviour
         _audioSource.PlayOneShot(_rootSound);       
     }
 
-    private void OnTriggerEnter2D()
+    private void OnTriggerExit2D()
     {
         Debug.Log("Score triggered.");
         OnScore?.Invoke();
