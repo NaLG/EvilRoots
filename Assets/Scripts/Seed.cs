@@ -4,9 +4,16 @@ using UnityEngine;
 public class Seed : MonoBehaviour
 {
 
+    public static event Action OnRoot;
+
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _force;
     [SerializeField] private float _yBound;
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,6 +23,12 @@ public class Seed : MonoBehaviour
             Flutter();
         }
 
+    }
+
+    private void OnCollisionEnter2D()
+    {
+        OnRoot?.Invoke();
+        Time.timeScale = 0f;
     }
 
     private void Flutter()
