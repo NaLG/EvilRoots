@@ -5,6 +5,7 @@ public class Seed : MonoBehaviour
 {
 
     public static event Action OnRoot;
+    public static event Action OnScore;
 
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _force;
@@ -27,8 +28,15 @@ public class Seed : MonoBehaviour
 
     private void OnCollisionEnter2D()
     {
+        Debug.Log("You dead.");
         OnRoot?.Invoke();
         Time.timeScale = 0f;
+    }
+
+    private void OnTriggerEnter2D()
+    {
+        Debug.Log("Score triggered.");
+        OnScore?.Invoke();
     }
 
     private void Flutter()
